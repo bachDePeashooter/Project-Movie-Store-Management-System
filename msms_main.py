@@ -1,9 +1,29 @@
 from time import*
+import domains
+import json
 
 class Admins :
+    def __init__(self, MovieList):
+        self.__MovieList = MovieList
     def AddMovie(self):
-        ()#todo
-        
+        numberOfMovie = int(input('Enter number of movies u wanna add: '))
+        for i in range(numberOfMovie):
+            self.inputMovie()
+    
+    def inputMovie(self):
+        id = int(input('ID: '))
+        title = str(input('Title of the film: '))
+        duration = str(input('Duration: '))
+        cost = int(input('Cost: '))
+        quantity = int(input('Quantity: '))
+        movie = domains.Movie(id,title,duration,cost,quantity)
+        self.__saleList.append(movie)
+    
+    #export list of Movies to file 
+    def exportMovie(self):
+        with open('Movie.dt') as file:
+            json.dump(self.__MovieList, file, default=lambda o: o.__dict__, indent=4 )
+
     def VerifyAccount(self):
         ()#todo
         
