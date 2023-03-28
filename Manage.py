@@ -1,5 +1,5 @@
 from math import *
-import input
+from input import Input
 import login
 
 
