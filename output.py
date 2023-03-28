@@ -1,19 +1,19 @@
 import json
 
 class Output:
-    def __init__(self, saleList):
-        self.__saleList = saleList
+    def __init__(self, movieList):
+        self.__movieList = movieList
     
-    def getSaleList(self):
-        return self.__saleList
+    def getMovieList(self):
+        return self.__movieList
     
-    def printSaleList(self):
-        for i in self.__saleList:
+    def printMovieList(self):
+        for i in self.__movieList:
             print("\nID: " + str(i.getId())
                   + "\nTitle: " + str(i.getTitle())
-                  + "\nDuration" + str(i.getDuration())
-                  + '\nCost' + str(i.getCost())
-                  + '\nQuantity' + str(i.getQuantity())
+                  + "\nDuration: " + str(i.getDuration())
+                  + '\nCost: ' + str(i.getCost())
+                  + '\nQuantity: ' + str(i.getQuantity())
                   )
     
     def List2File(self, filename, lst): 
@@ -22,6 +22,6 @@ class Output:
     
     def exportData(self):
         filename = 'Movie.dt'
-        self.List2File(filename,self.__saleList)
+        self.List2File(filename,self.__movieList)
 
             

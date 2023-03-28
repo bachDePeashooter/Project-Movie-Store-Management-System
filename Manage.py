@@ -1,10 +1,14 @@
 from math import *
 from input import Input
+from output import Output
 import login
 
 
 class Homepage():
-    #data
+    def __init__(self):
+        self.movieList = []
+        self.inputMovieList = Input(self.movieList)
+        self.outputMovieList = Output(self.movieList)
 
     def main(self):
         while True:
@@ -49,11 +53,13 @@ class Homepage():
                         if choice==2:
                             login.Shipper().newShipper() # Add a shipper
                         if choice==3:
-                            input.Input.addMovie() # Add a movie
+                            self.inputMovieList.addMovie() # Add a movie
+                            self.outputMovieList.exportData()
                         if choice==4:
                             login.Admins().VerifyAccount() #See information of a client (maybe show all email address and the admin can select one to see all information, if enought time, admin could delete the account)
                         if choice==5:
-                            login.Admins().AvailableMovie() #See all movie still available, if enought time, see all movie rencently sold
+                            self.inputMovieList.loadData() #Take data from file
+                            self.outputMovieList.printMovieList() #See all movie still available, if enought time, see all movie rencently sold
                         if choice==6:
                             break
                 

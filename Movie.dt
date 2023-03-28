@@ -1,0 +1,16 @@
+[
+    {
+        "_Movie__id": 1,
+        "_Movie__title": "Avengers",
+        "_Movie__duration": "1",
+        "_Movie__cost": 1,
+        "_Movie__quantity": 1
+    },
+    {
+        "_Movie__id": 2,
+        "_Movie__title": "Avatar",
+        "_Movie__duration": "2",
+        "_Movie__cost": 2,
+        "_Movie__quantity": 2
+    }
+]

@@ -1,8 +1,9 @@
 import json
 import domains
+from output import Output
 class Input:
-    def __init__(self, saleList):
-        self.__saleList = saleList
+    def __init__(self, movieList):
+        self.__movieList = movieList
 
     def inputMovie(self):
         id = int(input('ID: '))
@@ -11,7 +12,7 @@ class Input:
         cost = int(input('Cost: '))
         quantity = int(input('Quantity: '))
         movie = domains.Movie(id,title,duration,cost,quantity)
-        self.__saleList.append(movie)
+        self.__movieList.append(movie)
 
 
     def addMovie(self):
@@ -25,14 +26,14 @@ class Input:
         return data
     
     def loadData(self):
-        self.__saleList.clear()
         filename = 'Movie.dt'
+        self.__movieList.clear()
         data = self.File2List(filename)
 
         for i in data:
-            movie = domains.Sale(i['_Sale__id'],
-                                 i['_Sale__title'],
-                                 i['_Sale__duration'],
-                                 i['_Sale__cost'],
-                                 i['_Sale__quantity'])
-        self.__saleList.append(movie)
+            movie = domains.Movie(i['_Movie__id'],
+                                 i['_Movie__title'],
+                                 i['_Movie__duration'],
+                                 i['_Movie__cost'],
+                                 i['_Movie__quantity'])
+            self.__movieList.append(movie)

@@ -102,7 +102,7 @@ class Admins :
                 listEmail.append(list[5])
                 listPassword.append(list[4])
                 tab=fichier.readline()
-                nbClient-=1
+                nbAdmin-=1
 
             email=str(input("\nenter your email address: ")) #ask email and password
             password=str(input("\nenter your password : "))
