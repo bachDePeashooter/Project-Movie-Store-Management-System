@@ -59,7 +59,7 @@ class Clients :
         while nbClients!=0:
             file=tab.split(",")
             tab=fileClients.readline()
-            if file[0]==list[0]:
+            if file[5]==list[0]:
                 a+=1
             nbClients-=1
         fileClients.close()

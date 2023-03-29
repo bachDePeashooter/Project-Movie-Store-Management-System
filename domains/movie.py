@@ -9,6 +9,9 @@ class Movie:
     def __str__(self):
         return f'Movie[Id={self.__id}, Title={self.__title}, Duration={self.__duration}, Cost={self.__cost}, Quantity={self.__quantity}]'
     
+    def set_id(self, quantity):
+        self.__quantity = quantity
+
     def getId(self):
         return self.__id
     def getQuantity(self):

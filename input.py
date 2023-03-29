@@ -6,7 +6,7 @@ class Input:
         self.__movieList = movieList
 
     def inputMovie(self):
-        id = int(input('ID: '))
+        id = str(input('ID: '))
         title = str(input('Title of the film: '))
         duration = str(input('Duration: '))
         cost = int(input('Cost: '))

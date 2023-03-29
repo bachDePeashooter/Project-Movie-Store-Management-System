@@ -12,8 +12,8 @@ class Output:
             print("\nID: " + str(i.getId())
                   + "\nTitle: " + str(i.getTitle())
                   + "\nDuration: " + str(i.getDuration())
-                  + '\nCost: ' + str(i.getCost())
-                  + '\nQuantity: ' + str(i.getQuantity())
+                  + '\tCost: ' + str(i.getCost()) + '$'
+                  + '\tQuantity: ' + str(i.getQuantity())
                   )
     
     def List2File(self, filename, lst): 

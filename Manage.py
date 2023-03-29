@@ -1,14 +1,38 @@
 from math import *
 from input import Input
 from output import Output
+import domains
 import login
 
 
 class Homepage():
     def __init__(self):
         self.movieList = []
+        self.cart = []
         self.inputMovieList = Input(self.movieList)
         self.outputMovieList = Output(self.movieList)
+
+    def buyMovie(self):
+        self.inputMovieList.loadData() #Take data from file
+        self.outputMovieList.printMovieList()
+        listOfMovieID = []
+        for i in self.movieList:
+            ID = str(i.getId())
+            listOfMovieID.append(ID)
+
+        while True:
+            try:
+                choice = str(input('Enter ID of the movie you want: '))
+                if choice in listOfMovieID:
+                    for x in range (len(listOfMovieID)):
+                        if choice == listOfMovieID[x]:
+                            self.movieList.pop(x)
+                            self.outputMovieList.exportData()
+                            return True
+                else:
+                    print('Try again please')
+            except ValueError:
+                print('Try again please')
 
     def main(self):
         while True:
@@ -78,7 +102,8 @@ class Homepage():
                         if choice==1:
                             login.Clients().Informations() #See all Informations, if enought time, can change it, except the email address 
                         if choice==2:
-                            login.Clients().SeeMovie() #if choice=2, client can see all movie AVAILABLE and then, he can select one, see the price and add to cart
+                            self.buyMovie() #if choice=2, client can see all movie AVAILABLE and then, he can select one, see the price and add to cart
+
                         if choice==3:
                             login.Clients().Cart() #if choice=3, client can see his cart, he can delete his cart or validate it, and then choose delivery or pick up in store
                         if choice==4:
