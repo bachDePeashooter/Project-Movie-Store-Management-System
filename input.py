@@ -6,7 +6,7 @@ class Input:
         self.__movieList = movieList
 
     def inputMovie(self):
-        id = str(input('ID: '))
+        id = self.IdValidate()
         title = str(input('Title of the film: '))
         duration = str(input('Duration: '))
         cost = int(input('Cost: '))
@@ -14,6 +14,23 @@ class Input:
         movie = domains.Movie(id,title,duration,cost,status)
         self.__movieList.append(movie)
 
+    def IdValidate(self):
+        self.loadData()
+        listOfMovieID = []
+        for i in self.__movieList:
+                ID = str(i.getId())
+                listOfMovieID.append(ID)
+
+        id = str(input('ID: '))
+        if id not in listOfMovieID:
+            return id
+        
+        else:
+            print('Id is not validate, try another one')
+            return self.IdValidate()
+            
+        
+            
 
     def addMovie(self):
         numberOfMovie = int(input('Enter number of movies u wanna add: '))

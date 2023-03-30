@@ -12,5 +12,12 @@
         "_Movie__duration": "1h45",
         "_Movie__cost": 9,
         "_Movie__status": "Available"
+    },
+    {
+        "_Movie__id": "04",
+        "_Movie__title": "Doraemon",
+        "_Movie__duration": "2h",
+        "_Movie__cost": 15,
+        "_Movie__status": "Available"
     }
 ]
