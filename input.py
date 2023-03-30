@@ -10,8 +10,8 @@ class Input:
         title = str(input('Title of the film: '))
         duration = str(input('Duration: '))
         cost = int(input('Cost: '))
-        quantity = int(input('Quantity: '))
-        movie = domains.Movie(id,title,duration,cost,quantity)
+        status = 'Available'
+        movie = domains.Movie(id,title,duration,cost,status)
         self.__movieList.append(movie)
 
 
@@ -35,5 +35,5 @@ class Input:
                                  i['_Movie__title'],
                                  i['_Movie__duration'],
                                  i['_Movie__cost'],
-                                 i['_Movie__quantity'])
+                                 i['_Movie__status'])
             self.__movieList.append(movie)

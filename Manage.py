@@ -8,13 +8,13 @@ import login
 class Homepage():
     def __init__(self):
         self.movieList = []
-        self.cart = []
+        self.order = []
         self.inputMovieList = Input(self.movieList)
         self.outputMovieList = Output(self.movieList)
 
     def buyMovie(self):
         self.inputMovieList.loadData() #Take data from file
-        self.outputMovieList.printMovieList()
+        self.outputMovieList.printMovieList(self.movieList)
         listOfMovieID = []
         for i in self.movieList:
             ID = str(i.getId())
@@ -27,8 +27,10 @@ class Homepage():
                     for x in range (len(listOfMovieID)):
                         if choice == listOfMovieID[x]:
                             print('Purchase sucessfully')
+                            self.movieList[x].setStatus('Ready to ship')
+                            self.order.append(self.movieList[x])
                             self.movieList.pop(x)
-                            self.cart.append(self.movieList[x])
+                            self.outputMovieList.List2File('Orders.dt',self.order)
                             self.outputMovieList.exportData()
                             return True
                 else:
@@ -36,6 +38,41 @@ class Homepage():
             except ValueError:
                 print('Try again please')
 
+    def printOrders(self):
+        self.order.clear()
+        data = self.inputMovieList.File2List('Orders.dt')
+        for i in data:
+            movie = domains.Movie(i['_Movie__id'],
+                                 i['_Movie__title'],
+                                 i['_Movie__duration'],
+                                 i['_Movie__cost'],
+                                 i['_Movie__status'])
+            self.order.append(movie)
+        self.outputMovieList.printMovieList(self.order)
+    
+    def takeOrder(self):
+        self.printOrders()
+        listOfMovieID = []
+        for i in self.order:
+            ID = str(i.getId())
+            listOfMovieID.append(ID)
+        
+        while True:
+            try:
+                choice = str(input('Enter ID of the order: '))
+                if choice in listOfMovieID:
+                    for x in range (len(listOfMovieID)):
+                        if choice == listOfMovieID[x]:
+                            print('Order recieved successfully')
+                            self.order[x].setStatus('Shipped')
+                            self.outputMovieList.List2File('Orders.dt',self.order)
+                            return True
+                        else:
+                            print('Try again please')
+            except ValueError:
+                print('Try again please')
+
+        
     def main(self):
         while True:
             connection = 0
@@ -68,10 +105,10 @@ class Homepage():
                         while True:
                             try:
                                 choice=int(input("\nWhat do you whant to do? : \n1) Add an Admin account \n2)Add a Shipper account \n3)Add a movie \n4) Verify account information \n5)See all movie available \n6)Exit \n"))
-                                if choice==1 or choice==2 or choice==3 or choice==4 or choice==5:
+                                if choice==1 or choice==2 or choice==3 or choice==4 or choice==5 or choice == 6:
                                     break
                                 else:
-                                    print("Error, Please select 1, 2, 3, 4 or 5")
+                                    print("Error, Please select 1, 2, 3, 4, 5 or 6")
                             except ValueError:
                                 print("This is not a number")
                         if choice==1:
@@ -85,16 +122,16 @@ class Homepage():
                             login.Admins().VerifyAccount() #See information of a client (maybe show all email address and the admin can select one to see all information, if enought time, admin could delete the account)
                         if choice==5:
                             self.inputMovieList.loadData() #Take data from file
-                            self.outputMovieList.printMovieList() #See all movie still available, if enought time, see all movie rencently sold
+                            self.outputMovieList.printMovieList(self.movieList) #See all movie still available, if enought time, see all movie rencently sold
                         if choice==6:
-                            exit()
+                            break
                 
                 if Login==2:
                     login.Clients().LoginClient()
                     while True:
                         while True:
                             try:
-                                choice=int(input("\nWhat do you whant to do? : \n1)See his Information \n2)See all movie \n3)See his cart \n4)Exit \n"))
+                                choice=int(input("\nWhat do you whant to do? : \n1)See Information \n2)See all movie available \n3)Buy movie \n4)Order status \n5)Exit \n"))
                                 if choice==1 or choice==2 or choice==3 or choice==4 or choice==5:
                                     break
                                 else:
@@ -104,19 +141,21 @@ class Homepage():
                         if choice==1:
                             login.Clients().Informations() #See all Informations, if enought time, can change it, except the email address 
                         if choice==2:
-                            self.buyMovie() #if choice=2, client can see all movie AVAILABLE and then, he can select one, see the price and add to cart
-
+                            self.inputMovieList.loadData() #Take data from file
+                            self.outputMovieList.printMovieList(self.movieList) #if choice=2, client can see all movie AVAILABLE and then, he can select one, see the price and add to cart
                         if choice==3:
-                            login.Clients().Cart() #if choice=3, client can see his cart, he can delete his cart or validate it, and then choose delivery or pick up in store
+                            self.buyMovie() #if choice=3, client can see his cart, he can delete his cart or validate it, and then choose delivery or pick up in store
                         if choice==4:
-                            break
+                            self.printOrders()
+                        if choice==5:
+                            break                          
                 
                 if Login==3:
                     login.Shipper().LoginShipper()
                     while True:
                         while True:
                             try:
-                                choice=int(input("\nWhat do you whant to do? : \n1)See His Information \n2)See the orders in progress \n3)Exit \n"))
+                                choice=int(input("\nWhat do you whant to do? : \n1)See His Information \n2)See the orders in progress \n3)Take Order \n4) Exit \n"))
                                 if choice==1 or choice==2 or choice==3 or choice==4 or choice==5:
                                     break
                                 else:
@@ -126,8 +165,10 @@ class Homepage():
                         if choice==1:
                             login.Shipper().Informations() #See all Informations, if enought time, can change it, except the email address and salary
                         if choice==2:
-                            login.Shipper().Orders() #See all orders, customer’s address, amount of each product, total price, then select one, and select as delivred (delete the orders of the list)
-                        if choice==3:
+                            self.printOrders()
+                        if choice == 3:
+                            self.takeOrder() #See all orders, customer’s address, amount of each product, total price, then select one, and select as delivred (delete the orders of the list)
+                        if choice==4:
                             break
                         
                 if Login==4:

@@ -1,21 +1,21 @@
 class Movie:
-    def __init__(self, id, title, duration, cost, quantity):
+    def __init__(self, id, title, duration, cost, status):
         self.__id = id
         self.__title = title
         self.__duration = duration
         self.__cost = cost
-        self.__quantity = quantity
+        self.__status = status
 
     def __str__(self):
-        return f'Movie[Id={self.__id}, Title={self.__title}, Duration={self.__duration}, Cost={self.__cost}, Quantity={self.__quantity}]'
+        return f'Movie[Id={self.__id}, Title={self.__title}, Duration={self.__duration}, Cost={self.__cost}, Status={self.__status}]'
     
-    def set_id(self, quantity):
-        self.__quantity = quantity
+    def setStatus(self, status):
+        self.__status = status
 
     def getId(self):
         return self.__id
-    def getQuantity(self):
-        return self.__quantity
+    def getStatus(self):
+        return self.__status
     def getTitle(self):
         return self.__title
     def getDuration(self):

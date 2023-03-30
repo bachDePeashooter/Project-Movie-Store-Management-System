@@ -1,23 +1,16 @@
 [
     {
         "_Movie__id": "01",
-        "_Movie__title": "Avatar",
-        "_Movie__duration": "1h3",
+        "_Movie__title": "Avengers: Age of Ultron",
+        "_Movie__duration": "3h30",
         "_Movie__cost": 10,
-        "_Movie__quantity": 2
+        "_Movie__status": "Available"
     },
     {
         "_Movie__id": "02",
-        "_Movie__title": "Bumblebee",
-        "_Movie__duration": "3h",
-        "_Movie__cost": 12,
-        "_Movie__quantity": 1
-    },
-    {
-        "_Movie__id": "03",
-        "_Movie__title": "Zelda",
-        "_Movie__duration": "2h",
+        "_Movie__title": "One piece: Red",
+        "_Movie__duration": "1h45",
         "_Movie__cost": 9,
-        "_Movie__quantity": 1
+        "_Movie__status": "Available"
     }
 ]

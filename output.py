@@ -7,13 +7,13 @@ class Output:
     def getMovieList(self):
         return self.__movieList
     
-    def printMovieList(self):
-        for i in self.__movieList:
+    def printMovieList(self, lst):
+        for i in lst:
             print("\nID: " + str(i.getId())
                   + "\nTitle: " + str(i.getTitle())
                   + "\nDuration: " + str(i.getDuration())
                   + '\tCost: ' + str(i.getCost()) + '$'
-                  + '\tQuantity: ' + str(i.getQuantity())
+                  + '\tStatus: ' + str(i.getStatus())
                   )
     
     def List2File(self, filename, lst): 

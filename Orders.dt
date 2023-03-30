@@ -1,0 +1,9 @@
+[
+    {
+        "_Movie__id": "03",
+        "_Movie__title": "John Wick",
+        "_Movie__duration": "2h",
+        "_Movie__cost": 15,
+        "_Movie__status": "Shipped"
+    }
+]
