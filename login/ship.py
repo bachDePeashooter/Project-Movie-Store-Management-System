@@ -53,7 +53,7 @@ class Shipper :
         #Salary
         while True:
             try:
-                salary=int(input("\nEnter the salary of the new admin (in $) : "))
+                salary=int(input("\nEnter the salary of the new shipper (in $) : "))
                 if salary>=0:
                     break
             except ValueError:
@@ -158,3 +158,29 @@ class Shipper :
             else:
                 print("\nWelcome",firstname,lastname,)
                 break
+    
+    def Informations(self):
+        test=0
+        while True:
+            email=str(input("\nTo access to the information, please enter the email address of this account here : "))
+            if ("@" in email) and ("." in email):
+                break
+            else:
+                print("\nFormat Error")
+                
+        fileShipper= open ("Shipper.txt","r") 
+        nbShipper=len(fileShipper.readlines()) 
+        fileShipper= open ("Shipper.txt","r")  
+        tab=fileShipper.readline()
+        while nbShipper!=0:
+            file=tab.split(",")
+            tab=fileShipper.readline()
+            if file[5]==email:
+                test+=1
+                print("\nHere is all of the informations : ", "\nLastname : ",file[0], "\nFirstname : ",file[1], "\nDate of birth : ",file[2], "\nAddress : ",file[3], "\nPassword : ","******", "\nEmail Address : ",file[5], "\nSalary : ",file[6])
+                sleep(3)
+                             
+            nbShipper-=1
+        fileShipper.close()
+        if test==0:
+            print("Sorry, no account was found with this email address")

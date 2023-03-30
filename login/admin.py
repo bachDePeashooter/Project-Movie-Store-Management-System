@@ -1,7 +1,11 @@
 from time import *
+from .client import Clients
+from .ship import Shipper
+
 class Admins :
     def __init__(self) -> None:
         pass
+
     def newAdmin(self): #create a new admin
         print("\nWelcome to our Movies Store Management\n")
         
@@ -155,4 +159,89 @@ class Admins :
                     break
             else:
                 print("\nWelcome",firstname,lastname,)
+                break
+    
+    def Informations(self):
+        test=0
+        while True:
+            email=str(input("\nTo access to the information, please enter the email address of this account here  : "))
+            if ("@" in email) and ("." in email):
+                break
+            else:
+                print("\nFormat Error")
+                
+        fileAdmins= open ("Clients.txt","r") 
+        nbAdmins=len(fileAdmins.readlines()) 
+        fileAdmins= open ("Clients.txt","r")  
+        tab=fileAdmins.readline()
+        while nbAdmins!=0:
+            file=tab.split(",")
+            tab=fileAdmins.readline()
+            if file[5]==email:
+                test+=1
+                print("\nHere is all of the informations : ", "\nLastname : ",file[0], "\nFirstname : ",file[1], "\nDate of birth : ",file[2], "\nAddress : ",file[3], "\nPassword : ","******", "\nEmail Address : ",file[5], "\nSalary : ",file[6])
+                sleep(3)
+                             
+            nbAdmins-=1
+        fileAdmins.close()
+        if test==0:
+            print("Sorry, no account was found with this email address")
+            
+    def VerifyAccount(self):
+        while True:
+            while True:
+                try:
+                    who=int(input("\nWhich accounts do you want to see? : \n1)Clients Account \n2)Shipper Account \n3)Admin Account \n4)Back \n"))
+                    if who==1 or who==2 or who==3 or who==4 or who==5:
+                        break
+                    else:
+                        print("\nError, Please select 1, 2, 3 or 4")
+                except ValueError:
+                    print("\nThis is not a number")
+            if who==1:
+                print("\nThese are all the email addresses of existing clients accounts : ")
+                file=open("Clients.txt","r",encoding='utf-8')
+                nb=len(file.readlines())
+                file=open("Clients.txt","r",encoding='utf-8')
+                tab=file.readline()
+                email=[]
+                while nb!=0:
+                    list=tab.split(",")
+                    email.append(list[5])
+                    tab=file.readline()
+                    nb-=1
+                for i in email:
+                    print(i)
+                Clients().Informations()
+            if who==2:
+                print("\nThese are all the email addresses of existing shipper accounts : ")
+                file=open("Shipper.txt","r",encoding='utf-8')
+                nb=len(file.readlines())
+                file=open("Shipper.txt","r",encoding='utf-8')
+                tab=file.readline()
+                email=[]
+                while nb!=0:
+                    list=tab.split(",")
+                    email.append(list[5])
+                    tab=file.readline()
+                    nb-=1
+                for i in email:
+                    print(i)
+                Shipper().Informations()
+            if who==3:
+                print("\nThese are all the email addresses of existing admin accounts : ")
+                file=open("Admins.txt","r",encoding='utf-8')
+                nb=len(file.readlines())
+                file=open("Admins.txt","r",encoding='utf-8')
+                tab=file.readline()
+                email=[]
+                while nb!=0:
+                    list=tab.split(",")
+                    email.append(list[5])
+                    tab=file.readline()
+                    nb-=1
+                for i in email:
+                    print(i)
+                Admins().Informations()
+            if who==4:
                 break

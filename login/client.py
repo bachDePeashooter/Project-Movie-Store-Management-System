@@ -148,3 +148,29 @@ class Clients :
             else:
                 print("\nWelcome",firstname,lastname,)
                 break
+        
+    def Informations(self):
+        test=0
+        while True:
+            email=str(input("\nTo access to the information, please enter the email address of this account here  : "))
+            if ("@" in email) and ("." in email):
+                break
+            else:
+                print("\nFormat Error")
+                
+        fileClients= open ("Clients.txt","r") 
+        nbClients=len(fileClients.readlines()) 
+        fileClients= open ("Clients.txt","r")  
+        tab=fileClients.readline()
+        while nbClients!=0:
+            file=tab.split(",")
+            tab=fileClients.readline()
+            if file[5]==email:
+                test+=1
+                print("\nHere is all of the informations : ", "\nLastname : ",file[0], "\nFirstname : ",file[1], "\nDate of birth : ",file[2], "\nAddress : ",file[3], "\nPassword : ","******", "\nEmail Address : ",file[5])
+                sleep(3)
+                             
+            nbClients-=1
+        fileClients.close()
+        if test==0:
+            print("Sorry, no account was found with this email address")
