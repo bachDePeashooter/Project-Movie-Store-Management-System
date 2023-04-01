@@ -1,12 +1,5 @@
 [
     {
-        "_Movie__id": "01",
-        "_Movie__title": "Avengers: Age of Ultron",
-        "_Movie__duration": "3h30",
-        "_Movie__cost": 10,
-        "_Movie__status": "Available"
-    },
-    {
         "_Movie__id": "02",
         "_Movie__title": "One piece: Red",
         "_Movie__duration": "1h45",
@@ -18,6 +11,41 @@
         "_Movie__title": "Doraemon",
         "_Movie__duration": "2h",
         "_Movie__cost": 15,
+        "_Movie__status": "Available"
+    },
+    {
+        "_Movie__id": "07",
+        "_Movie__title": "Scream",
+        "_Movie__duration": "2h30",
+        "_Movie__cost": 14,
+        "_Movie__status": "Available"
+    },
+    {
+        "_Movie__id": "08",
+        "_Movie__title": "Akira",
+        "_Movie__duration": "1h22",
+        "_Movie__cost": 10,
+        "_Movie__status": "Available"
+    },
+    {
+        "_Movie__id": "01",
+        "_Movie__title": "Morbius",
+        "_Movie__duration": "2h",
+        "_Movie__cost": 999,
+        "_Movie__status": "Available"
+    },
+    {
+        "_Movie__id": "03",
+        "_Movie__title": "Ben10: The movie",
+        "_Movie__duration": "2h44",
+        "_Movie__cost": 10,
+        "_Movie__status": "Available"
+    },
+    {
+        "_Movie__id": "05",
+        "_Movie__title": "21 Wall Street",
+        "_Movie__duration": "2h15",
+        "_Movie__cost": 8,
         "_Movie__status": "Available"
     }
 ]

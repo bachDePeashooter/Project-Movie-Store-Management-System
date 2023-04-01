@@ -15,11 +15,10 @@ class Input:
         self.__movieList.append(movie)
 
     def IdValidate(self):
-        self.loadData()
         listOfMovieID = []
         for i in self.__movieList:
-                ID = str(i.getId())
-                listOfMovieID.append(ID)
+            ID = str(i.getId())
+            listOfMovieID.append(ID)
 
         id = str(input('ID: '))
         if id not in listOfMovieID:
@@ -28,9 +27,6 @@ class Input:
         else:
             print('Id is not validate, try another one')
             return self.IdValidate()
-            
-        
-            
 
     def addMovie(self):
         numberOfMovie = int(input('Enter number of movies u wanna add: '))

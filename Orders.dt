@@ -1,9 +1,9 @@
 [
     {
-        "_Movie__id": "03",
-        "_Movie__title": "John Wick",
-        "_Movie__duration": "2h",
-        "_Movie__cost": 15,
-        "_Movie__status": "Shipped"
+        "_Movie__id": "01",
+        "_Movie__title": "Avengers: Age of Ultron",
+        "_Movie__duration": "3h30",
+        "_Movie__cost": 10,
+        "_Movie__status": "Ready to ship"
     }
 ]

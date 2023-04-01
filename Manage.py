@@ -116,7 +116,7 @@ class Homepage():
                         if choice==2:
                             login.Shipper().newShipper() # Add a shipper
                         if choice==3:
-                            self.movieList.clear()
+                            self.inputMovieList.loadData()
                             self.inputMovieList.addMovie() # Add a movie
                             self.outputMovieList.exportData()
                         if choice==4:
