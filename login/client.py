@@ -139,12 +139,12 @@ class Clients :
             if i==nbclient:
                 print("\nSorry, no account exists with this email address")
                 connection=int(input("\n1) try to connect again \n2) exit \n "))
-                if connection== 2:
+                if connection== 1:
                     print("\nclosing in progress...")
-                    exit()
-                elif connection!=2 or connection!=1:
+                    return Clients.LoginClient(self)
+                elif connection==2 or connection!=1:
                     print("\nerror, closing in progress...")
-                    break
+                    exit()
             else:
                 print("\nWelcome",firstname,lastname,)
                 break
